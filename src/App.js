@@ -1,14 +1,14 @@
-import { useState } from "react";
+import React from "react";
+import { useForm } from "./useForm";
 
-function App(props) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const App = () => {
+  const [values, handleChange] = useForm({email: "", password: ""});
 
   return (
-    <div>
-    <input name="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
-    <input name="password" type="password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
-    </div>
+    <>
+    <input name="email" value={values.email} onChange={handleChange} />
+    <input name="password" type="password" value={values.password} onChange={handleChange} />
+    </>
   );
 }
 
