@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Hello } from "./Hello";
+import {useFetch} from "./useFetch";
 import { useForm } from "./useForm";
 
 const App = () => {
-  const [values, handleChange] = useForm({email: "", firstName: "", password: ""});
+  const [values, handleChange] = useForm({
+    email: "", 
+    firstName: "", 
+    password: ""
+  });
 
+  useFetch('http://numbersapi.com/43/trivia');
 
-  // const [showHello, setShowHello] = useState(true);
-
-  // on unmount, cleaner
-  useEffect(() => {
-
-    const onMouseMove = e => {
-      console.log(e);
-    }
-
-    window.addEventListener('mousemove', onMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-    }
-  }, [])
 
   return (
     <>

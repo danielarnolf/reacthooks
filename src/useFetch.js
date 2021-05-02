@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
-const useFetch = (url) => {
+export const useFetch = url => {
 
   useEffect(() => {
    fetch(url)
-   .then((x) => {x.text()})
-   .then((y) => {
+   .then(x => x.text())
+   .then(y => {
     console.log(y);
    })
-  }, [url])
-
-
-  // return (
-  //   <div>
-      
-  //   </div>
-  // );
+  }, [url]);
 };
 
-export default useFetch;
+ 
