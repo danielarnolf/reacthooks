@@ -10,11 +10,11 @@ const App = () => {
     password: ""
   });
 
-  useFetch('http://numbersapi.com/43/trivia');
-
+  const {data, loading} = useFetch('http://numbersapi.com/43/trivia');
 
   return (
-    <>
+    <>  
+    <div>{loading ? "Loading..." : data}</div>
     {/* <button onClick={() => setShowHello(!showHello)}>Toggle</button> */}
     {/* {showHello && <Hello/>} */}
     <input name="email" value={values.email} onChange={handleChange} />
