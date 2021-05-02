@@ -5,22 +5,27 @@ import { useForm } from "./useForm";
 const App = () => {
   const [values, handleChange] = useForm({email: "", firstName: "", password: ""});
 
-  // on first render
+
+  // const [showHello, setShowHello] = useState(true);
+
+  // on unmount, cleaner
   useEffect(() => {
-    console.log("First Render");
+
+    const onMouseMove = e => {
+      console.log(e);
+    }
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    }
   }, [])
-
-  // on changes to email value
-  useEffect(() => {
-    console.log("render");
-  }, [values.email])
-
-  const [showHello, setShowHello] = useState(true);
 
   return (
     <>
-    <button onClick={() => setShowHello(!showHello)}>Toggle</button>
-    {showHello && <Hello/>}
+    {/* <button onClick={() => setShowHello(!showHello)}>Toggle</button> */}
+    {/* {showHello && <Hello/>} */}
     <input name="email" value={values.email} onChange={handleChange} />
     <input name="firstName" value={values.firstName} placeholder="First Name" onChange={handleChange} />
     <input name="password" type="password" value={values.password} onChange={handleChange} />
