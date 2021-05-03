@@ -1,14 +1,10 @@
-import React, {useEffect} from 'react';
+import React, { useRef } from 'react';
 
 export const Hello = () => {
 
-  // on unmount, cleaner
-  useEffect(() => {
-    console.log("render");
-    return () => {
-      console.log("unmount");
-    }
-  }, [])
+  const renders = useRef(0);
+
+  console.log('hello renders: ', renders.current++);
 
   return (
     <div>
@@ -16,4 +12,25 @@ export const Hello = () => {
     </div>
   );
 };
+
+
+
+// import React, {useEffect} from 'react';
+
+// export const Hello = () => {
+
+//   // on unmount, cleaner
+//   useEffect(() => {
+//     console.log("render");
+//     return () => {
+//       console.log("unmount");
+//     }
+//   }, [])
+
+//   return (
+//     <div>
+//       hello
+//     </div>
+//   );
+// };
 
