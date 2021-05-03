@@ -24,7 +24,7 @@ export const useFetch = url => {
      if(isCurrent.current) {
       setState({data: y, loading: false})       
      }      
-    }, 2000);
+    }, 100);
    })
   }, [url]);
 

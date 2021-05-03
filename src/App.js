@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import {useFetch} from "./useFetch";
+import React, { useRef, useState } from "react";
+
 import { useForm } from "./useForm";
 import { Hello } from "./Hello";
 
@@ -10,25 +10,11 @@ const App = () => {
     password: ""
   });
 
-  const [count, setCount] = useState(() => JSON.parse(localStorage.getItem("count")));
-  const {data, loading} = useFetch(`http://numbersapi.com/${count}/trivia`);
-
   const inputRef = useRef();
   const hello = useRef(() => console.log('Hello Ref'))
   const [showHello, setShowHello] = useState(true)
-  // Persist value of count
-
-  useEffect(() => { 
-    localStorage.setItem('count', JSON.stringify(count));
-  }, [count])
-
   return (
     <>  
-    <div>{loading ? "Loading..." : data}</div>
-    <div>Count: {count}</div>
-    <button onClick={() => setCount( c => c + 1 )}>Increase</button>
-    <button onClick={() => setCount( c => c - 1 )}>Decrease</button>
-    <button onClick={() => setCount( 0 )}>Reset</button>
     <button onClick={() => setShowHello(!showHello)}>Toggle</button>
     {showHello && <Hello/>}
     <input ref={inputRef} name="email" value={values.email} onChange={handleChange} />
